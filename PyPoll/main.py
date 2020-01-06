@@ -5,30 +5,6 @@ import csv
 vote_count = 0
 #Create empty list to store vote count in 
 vote_total = []
-#Define variable for each vote for Kahn
-vote_count_kahn = 0
-#Create empty list to store each vote count for Kahn
-vote_total_kahn = []
-#Create variable for each vote for Correy
-vote_count_correy = 0
-#Create empty list to store each vote for Correy
-vote_total_correy = []
-#Create variable for each vote for Li
-vote_count_li = 0
-#Create empty list to store each vote for Li
-vote_total_li = []
-#Create variable for each vote for O'Tooley
-vote_count_otooley = 0
-#Create empty list to store votes for O'Tooley
-vote_total_otooley = []
-#Percentage votes for Kahn
-percent_kahn_votes = 0
-#Percentage votes for Correy
-percent_correy_votes = 0
-#Percentage votes for Li
-percent_li_votes = 0
-#Percentage votes for O'Tooley
-percent_otooley_votes = 0
 
 #Create path to open CSV file
 csv_path = os.path.join("election_data.csv")
@@ -40,50 +16,36 @@ with open(csv_path) as election_data:
     
     header = next(reader)
 
+    #key: candidate name, value: vote counts
+    candidate_dictionary = {}
+
 
 #Loop through reader
     for row in reader:
         #print(row)
-        #Create counter to debug
+        candidate = row[2]
+        if candidate in candidate_dictionary:
+            candidate_dictionary[candidate] += 1
+        else: # candidate not in dict yet
+            candidate_dictionary[candidate] = 1
+
+    votes = list(candidate_dictionary.values())
+    total_votes = sum(votes)
         
-        #count votes
-        vote_count += 1
-        #append to empty list
-        vote_total.append(row[0])
-        #print(month_count)
-        #print(vote_count)
+print('-- CAnidaates --')
+print(candidate_dictionary)
 
-    #Creat list of candidates
-    candidate_list =["Kahn","Correy","Li","O'Tooley"]
+print("Election Results")
+print("________________")
 
+winner = ''
+winner_count = 0
+for candidate, vote_count in candidate_dictionary.items():
+    print(candidate + ": " + str(vote_count/total_votes*100) +"% ("+ str(vote_count) +")")
+    if vote_count > winner_count:
+        winner = candidate
+        winner_count = vote_count
 
-    #count votes for Kahn
-    if row[2] == str("Kahn"):
-        vote_count_kahn += 1
-        vote_total_kahn.append(row[2])
-        print(vote_count_kahn)
-        percent_kahn_votes = vote_total/vote_total_kahn
-        
-        
-
-    #count votes for Correy
-    if row[2]  == str("Correy"):
-        vote_count_correy += 1
-        vote_total_correy.append(row[2])
-        percent_correy_votes = vote_total/vote_total_correy
-
-    #count votes for Li
-    if row[2] == str("Li"):
-        vote_count_li += 1
-        vote_total_li.append(row[2])
-        percent_li_votes = vote_total/vote_total_li
-
-    #count votes for O'Tooley
-    if row[2] == str("O'Tooley"):
-        vote_count_otooley += 1
-        vote_total_otooley.append(row[2])
-        #percent_otooley_votes = int(vote_total)/int(vote_total_otooley)
-
-#Print("Election Results")
-#Print("________________")
-#Print("Kahn"+percent_kahn_votes+"("+vote_total_kahn+")")
+print("________________")
+print("Winner: " + winner)
+print("________________")
