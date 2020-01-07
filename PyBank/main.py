@@ -16,7 +16,7 @@ month_names = []
 
 
 #Create path to open CSV file
-csv_path = os.path.join("Resources", "budget_data.csv")
+csv_path = os.path.join("C:\\Users\\14704\\Desktop\\Python homework\\Resources\\budget_data.csv")
 
 #Open CSV file, read it, and skip header
 with open(csv_path) as budget_data:
@@ -35,10 +35,10 @@ with open(csv_path) as budget_data:
         month_total += 1
         #Append each values in column one to month count empty list
         month_count.append(row[0])
-        print(month_total)
+        #print(month_total)
         #Sum values of profit/losses
         total_sum += int(row[1])
-        print(total_sum)
+        #print(total_sum)
         month_names.append(row[0])
         #Another way to sum values of profit/losses
         #net_profit = net_profit + int(row[1])
@@ -65,7 +65,7 @@ with open(csv_path) as budget_data:
 
     #define average change as the total chnage in profits divided by the count of members within set of profits
     average_change = total_change/len(profits)
-    print(average_change)
+    #print(average_change)
     # find max val and month
     max_chg = max(profits)
     max_index = profits.index(max_chg)
@@ -75,6 +75,14 @@ with open(csv_path) as budget_data:
     min_index = profits.index(min_chg)
     min_month = month_names[min_index]
 
-    print('max chg', max_chg, 'in', max_month)
-    print('min chg', min_chg, 'in', min_month)
+    print("Financial Analysis")
+    print("__________________")
+    print(f'Total Months:{month_total}')
+    print(f'Total:${total_sum}')
+
+    print("Average Change:"+" " +"$"+ str(average_change))
+
+    print("Greatest Increase in Profits:"+" "+'$', max_chg, 'in', max_month)
+    print("Greatest Decrease in Profits:"+" "+'$', min_chg, 'in', min_month)
     #s = f"max ${max_chg:}"
+
