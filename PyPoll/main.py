@@ -7,7 +7,7 @@ vote_count = 0
 vote_total = []
 
 #Create path to open CSV file
-csv_path = os.path.join("election_data.csv")
+csv_path = os.path.join("C:\\Users\\14704\\Desktop\\Python homework\\Resources\\election_data.csv")
 
 #Open CSV file, read it, and skip header
 with open(csv_path) as election_data:
@@ -37,6 +37,8 @@ print(candidate_dictionary)
 
 print("Election Results")
 print("________________")
+print("Total votes:"+" "+str(total_votes))
+print("________________")
 
 winner = ''
 winner_count = 0
@@ -49,3 +51,24 @@ for candidate, vote_count in candidate_dictionary.items():
 print("________________")
 print("Winner: " + winner)
 print("________________")
+
+with open("election_results.txt","a") as f:
+    print('-- CAnidaates --')
+    print(candidate_dictionary)
+
+    print("Election Results")
+    print("________________")
+    print("Total votes:"+" "+str(total_votes))
+    print("________________")
+
+    winner = ''
+    winner_count = 0
+    for candidate, vote_count in candidate_dictionary.items():
+        print(candidate + ": " + str(vote_count/total_votes*100) +"% ("+ str(vote_count) +")")
+        if vote_count > winner_count:
+            winner = candidate
+            winner_count = vote_count
+
+    print("________________")
+    print("Winner: " + winner)
+    print("________________")

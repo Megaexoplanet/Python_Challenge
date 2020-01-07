@@ -82,7 +82,21 @@ with open(csv_path) as budget_data:
 
     print("Average Change:"+" " +"$"+ str(average_change))
 
-    print("Greatest Increase in Profits:"+" "+'$', max_chg, 'in', max_month)
-    print("Greatest Decrease in Profits:"+" "+'$', min_chg, 'in', min_month)
+    print("Greatest Increase in Profits:"+" "+'$', max_chg, "in", max_month)
+    print("Greatest Decrease in Profits:"+" "+'$', min_chg, "in", min_month)
+    
+    with open("financial_analysis.txt","a") as f:
+        print("Financial Analysis")
+        print("__________________")
+        print(f'Total Months:{month_total}')
+        print(f'Total:${total_sum}')
+
+        print("Average Change:"+" " +"$"+ str(average_change))
+
+        print("Greatest Increase in Profits:"+" "+'$', max_chg, "in", max_month)
+        print("Greatest Decrease in Profits:"+" "+'$', min_chg, "in", min_month)
+
+
+
     #s = f"max ${max_chg:}"
 
