@@ -7,7 +7,7 @@ vote_count = 0
 vote_total = []
 
 #Create path to open CSV file
-csv_path = os.path.join("C:\\Users\\14704\\OneDrive\\Desktop\\github\\Python_Challenge\\PyPoll\\election_data.csv")
+csv_path = os.path.join('..','PyPoll','election_data.csv')
 
 #Open CSV file, read it, and skip header
 with open(csv_path) as election_data:

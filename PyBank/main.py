@@ -16,7 +16,7 @@ month_names = []
 
 
 #Create path to open CSV file
-csv_path = os.path.join("C:\\Users\\14704\\OneDrive\\Desktop\\github\\Python_Challenge\\PyBank\\budget_data.csv")
+csv_path = os.path.join('..','PyBank','budget_data.csv')
 
 #Open CSV file, read it, and skip header
 with open(csv_path) as budget_data:
